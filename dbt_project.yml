@@ -34,4 +34,4 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 
 vars:
-  schema_apac: APAC
+  schema_apac: PUBLIC_APAC

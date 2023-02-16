@@ -1,5 +1,5 @@
 {{config (
-    schema = var('schema_apac'),
+    schema = 'PUBLIC_APAC', 
     database = 'DEV',
     materialized = 'table'
 )}}
