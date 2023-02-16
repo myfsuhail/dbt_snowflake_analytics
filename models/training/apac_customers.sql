@@ -1,7 +1,7 @@
-{{ config(
-    schema=var('schema_apac'),
-    database='DEV',
-    materialized='table'
+{{config (
+    schema = var('schema_apac'),
+    database = 'DEV',
+    materialized = 'table'
 )}}
 select
     c_custkey as cust_key,
