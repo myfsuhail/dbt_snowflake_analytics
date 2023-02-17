@@ -1,8 +1,7 @@
 {{config (
     schema = 'NA', 
     database = 'DEV',
-    materialized = 'incremental',
-    pre_hook='truncate table {{this}}'
+    materialized = 'incremental'
 )}}
 select
     c_custkey as cust_key,
