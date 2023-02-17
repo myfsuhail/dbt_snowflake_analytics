@@ -35,3 +35,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 vars:
   schema_apac: APAC
+  table_name: customers_unk
+  region_name: UNK

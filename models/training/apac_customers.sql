@@ -1,5 +1,5 @@
 {{config (
-    schema = 'PUBLIC_APAC', 
+    schema = 'APAC', 
     database = 'DEV',
     materialized = 'table'
 )}}
