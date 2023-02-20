@@ -34,3 +34,9 @@ sources:
         description: REGION master data
       - name: ORDERS
         description: ORDERS master data
+
+  - name: NA
+    database: DEV
+    schema: NA
+    tables:
+      - name: NA_CUSTOMERS
