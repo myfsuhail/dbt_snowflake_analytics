@@ -1,8 +1,8 @@
 {{config (
-    schema = 'NA', 
+    schema = var('schema_name'), 
     database = 'DEV',
     materialized = 'table',
-    alias=var('table_name')
+    alias= 'DIM_CUSTOMER'
 )}}
 select
     c_custkey as cust_key,

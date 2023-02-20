@@ -39,17 +39,17 @@ sources:
     database: DEV
     schema: NA
     tables:
-      - name: CUSTOMER
+      - name: DIM_CUSTOMER
         description: CUSTOMER table for NA region
   - name: EMEA
     database: DEV
     schema: EMEA
     tables:
-      - name: CUSTOMER
+      - name: DIM_CUSTOMER
         description: CUSTOMER table for EMEA region
   - name: APAC
     database: DEV
     schema: APAC
     tables:
-      - name: CUSTOMER
+      - name: DIM_CUSTOMER
         description: CUSTOMER table for APAC region

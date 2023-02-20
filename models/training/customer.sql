@@ -11,7 +11,7 @@ select
     region_name,
     cust_acct_bal,
     sys_insr_dt
-from {{source('NA','CUSTOMER')}}
+from {{source('NA','DIM_CUSTOMER')}}
 union
 select
     cust_key,
@@ -22,7 +22,7 @@ select
     region_name,
     cust_acct_bal,
     sys_insr_dt
-from {{source('EMEA','CUSTOMER')}}
+from {{source('EMEA','DIM_CUSTOMER')}}
 union
 select
     cust_key,
@@ -33,4 +33,4 @@ select
     region_name,
     cust_acct_bal,
     sys_insr_dt
-from {{source('APAC','CUSTOMER')}}
+from {{source('APAC','DIM_CUSTOMER')}}
