@@ -35,29 +35,28 @@ sources:
         description: REGION master data
       - name: ORDERS
         description: ORDERS master data
-<<<<<<< HEAD
 
-=======
->>>>>>> a394f0bb08efb142ebc91fff66decea82e390835
+
   - name: NA
     database: DEV
     schema: NA
     tables:
-<<<<<<< HEAD
       - name: NA_CUSTOMERS
-=======
       - name: DIM_CUSTOMER
         description: CUSTOMER table for NA region
+
+
   - name: EMEA
     database: DEV
     schema: EMEA
     tables:
       - name: DIM_CUSTOMER
         description: CUSTOMER table for EMEA region
+
+
   - name: APAC
     database: DEV
     schema: APAC
     tables:
       - name: DIM_CUSTOMER
         description: CUSTOMER table for APAC region
->>>>>>> a394f0bb08efb142ebc91fff66decea82e390835
