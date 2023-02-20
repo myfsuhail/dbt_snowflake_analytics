@@ -1,12 +1,26 @@
 ---
 version: 2
 models:
-  - name: apac_customers
+  - name: customers_var
     columns:
       - name: cust_key
         tests:
           - unique
           - not_null
+  - name: apac_customers
+    columns:
+      - name: cust_key
+        tests:
+          - unique:
+              config:
+                store_failures: true
+                schema: APAC
+                alias:  apac_customers_not_null_fail
+          - not_null:
+              config:
+                store_failures: true 
+                schema: APAC
+                alias:  apac_customers_unique_fail
 sources:
   - name: PUBLIC
     database: DEV
