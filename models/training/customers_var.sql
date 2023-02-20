@@ -11,7 +11,8 @@ select
     c_phone as cust_phone_num,
     n_name as nation,
     r_name as region_name,
-    c_acctbal as cust_acct_bal
+    c_acctbal as cust_acct_bal,
+    sysdate() as sys_insr_dt
 from {{source('PUBLIC','CUSTOMER')}}
 left join {{source('PUBLIC','NATION')}} on customer.c_nationkey = nation.n_nationkey
 left join {{source('PUBLIC','REGION')}} on nation.n_regionkey = region.r_regionkey
