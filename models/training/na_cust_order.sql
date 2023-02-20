@@ -1,6 +1,7 @@
 {{config (
     schema = 'NA', 
     database = 'DEV',
+    unique_key=['cust_key','order_key'],
     materialized = 'incremental'
 )}}
 
