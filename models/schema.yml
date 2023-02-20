@@ -2,6 +2,7 @@
 version: 2
 models:
   - name: customers_var
+    description: This model is used to load customer realted data of various region to a region specific customer table.
     columns:
       - name: cust_key
         tests:
@@ -34,3 +35,21 @@ sources:
         description: REGION master data
       - name: ORDERS
         description: ORDERS master data
+  - name: NA
+    database: DEV
+    schema: NA
+    tables:
+      - name: CUSTOMER
+        description: CUSTOMER table for NA region
+  - name: EMEA
+    database: DEV
+    schema: EMEA
+    tables:
+      - name: CUSTOMER
+        description: CUSTOMER table for EMEA region
+  - name: APAC
+    database: DEV
+    schema: APAC
+    tables:
+      - name: CUSTOMER
+        description: CUSTOMER table for APAC region
