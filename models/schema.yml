@@ -32,3 +32,5 @@ sources:
         description: NATION master data
       - name: REGION
         description: REGION master data
+      - name: ORDERS
+        description: ORDERS master data
