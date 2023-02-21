@@ -14,6 +14,6 @@ select
     O_ORDERSTATUS as order_status_cd,
     O_ORDERDATE as order_dt,
     O_TOTALPRICE as total_price
-from {{ref('emea_customers')}} a
+from {{ref('customers_var')}} a
 inner join {{source('PUBLIC','ORDERS')}} b
 on a.cust_key=b.o_custkey
