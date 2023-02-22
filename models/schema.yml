@@ -1,21 +1,75 @@
-
+---
 version: 2
-
 models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+  - name: apac_customers
+    columns:
+      - name: cust_key
+        tests:
+          - unique:
+              config:
+                store_failures: true
+                schema: APAC
+                alias:  apac_customers_not_null_fail
+          - not_null:
+              config:
+                store_failures: true 
+                schema: APAC
+                alias:  apac_customers_unique_fail
+  - name: orders_summed
+    columns:
+      - name: order_total
+        tests:
+         - valid_amount
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
+sources:
+  - name: PUBLIC
+    database: DEV
+    schema: PUBLIC
+    tables:
+      - name: CUSTOMER
+        description: CUSTOMER master data
+      - name: NATION
+        description: NATION master data
+      - name: REGION
+        description: REGION master data
+      - name: ORDERS
+<<<<<<< HEAD
+        description: ORDERS master data
+        columns:
+          - name: o_orderstatus
+            description: Provides the status of the orders
             tests:
-                - unique
-                - not_null
+             - accepted_values:
+                values: ['F','P','O']
+=======
+        description: ORDERS transactional data
+      - name: LINEITEM
+        description: Lineitem transactional data
+>>>>>>> d9786b8a4dc95ec690d34d8c861f4660f5e3ec73
+      - name: JOB_CTRL_TBL
+        description: Job control table
+
+
+  - name: NA
+    database: DEV
+    schema: NA
+    tables:
+      - name: NA_CUSTOMERS
+      - name: DIM_CUSTOMER
+        description: CUSTOMER table for NA region
+
+
+  - name: EMEA
+    database: DEV
+    schema: EMEA
+    tables:
+      - name: DIM_CUSTOMER
+        description: CUSTOMER table for EMEA region
+
+
+  - name: APAC
+    database: DEV
+    schema: APAC
+    tables:
+      - name: DIM_CUSTOMER
+        description: CUSTOMER table for APAC region
