@@ -33,6 +33,7 @@ sources:
       - name: REGION
         description: REGION master data
       - name: ORDERS
+<<<<<<< HEAD
         description: ORDERS master data
         columns:
           - name: o_orderstatus
@@ -40,6 +41,11 @@ sources:
             tests:
              - accepted_values:
                 values: ['F','P','O']
+=======
+        description: ORDERS transactional data
+      - name: LINEITEM
+        description: Lineitem transactional data
+>>>>>>> d9786b8a4dc95ec690d34d8c861f4660f5e3ec73
       - name: JOB_CTRL_TBL
         description: Job control table
 
