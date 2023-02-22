@@ -1,13 +1,6 @@
 ---
 version: 2
 models:
-  - name: customers_var
-    description: This model is used to load customer realted data of various region to a region specific customer table.
-    columns:
-      - name: cust_key
-        tests:
-          - unique
-          - not_null
   - name: apac_customers
     columns:
       - name: cust_key
@@ -22,6 +15,11 @@ models:
                 store_failures: true 
                 schema: APAC
                 alias:  apac_customers_unique_fail
+  - name: orders_summed
+    columns:
+      - name: order_total
+        tests:
+          - valid_amount
 sources:
   - name: PUBLIC
     database: DEV
