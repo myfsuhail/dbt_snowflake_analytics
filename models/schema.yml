@@ -19,7 +19,8 @@ models:
     columns:
       - name: order_total
         tests:
-          - valid_amount
+         - valid_amount
+
 sources:
   - name: PUBLIC
     database: DEV
