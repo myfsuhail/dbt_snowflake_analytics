@@ -18,8 +18,5 @@ select
 from {{source('PUBLIC','CUSTOMER')}}
 left join {{source('PUBLIC','NATION')}} on customer.c_nationkey = nation.n_nationkey
 left join {{source('PUBLIC','REGION')}} on nation.n_regionkey = region.r_regionkey
---where r_name in ('AMERICA') 
-
-
-
---    merge_update_columns = ['email', 'ip_address']
+where r_name in ('AMERICA')
+and  customer.upd_ts > (select max(upd_ts) from {{this}})
