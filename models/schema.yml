@@ -34,6 +34,12 @@ sources:
         description: REGION master data
       - name: ORDERS
         description: ORDERS master data
+        columns:
+          - name: o_orderstatus
+            description: Provides the status of the orders
+            tests:
+             - accepted_values:
+                values: ['F','P','O']
       - name: JOB_CTRL_TBL
         description: Job control table
 

@@ -1,5 +1,5 @@
 {{config (
-    schema = 'FIN', 
+    schema = 'STAGING', 
     database = 'DEV',
     materialized = 'table'
 )}}
