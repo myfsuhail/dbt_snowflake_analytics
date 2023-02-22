@@ -33,7 +33,9 @@ sources:
       - name: REGION
         description: REGION master data
       - name: ORDERS
-        description: ORDERS master data
+        description: ORDERS transactional data
+      - name: LINEITEM
+        description: Lineitem transactional data
       - name: JOB_CTRL_TBL
         description: Job control table
 

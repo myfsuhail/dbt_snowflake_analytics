@@ -12,6 +12,7 @@ select
     c_address as cust_address,
     c_phone as cust_phone_num,
     c_acctbal as cust_acct_bal,
+    c_nationkey as nation_key,
     upd_ts
 from {{source('PUBLIC','CUSTOMER')}}
 where upd_ts > (select nvl(max(upd_ts),'1970-01-01') from {{this}})
