@@ -37,3 +37,8 @@ vars:
   schema_apac: APAC
   schema_name: PUBLIC
   region_name: UNK
+
+#models:
+ #analytics:
+  #training:
+   # +schema: FIN
