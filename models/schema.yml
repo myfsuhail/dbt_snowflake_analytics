@@ -4,14 +4,20 @@ models:
     columns:
       - name: cust_key
         tests:
-          - unique
-          - not_null
+          - unique:
+              config:
+                store_failures: true
+                schema: APAC
+                alias:  apac_customers_not_null_fail
+          - not_null:
+             config:
+                store_failures: true
   - name: order_detail
     columns:
      - name: order_status
        tests:
           - accepted_values:
-              values: ['F','P','O']
+              values: ['F','P']
 
 sources:
   - name: PUBLIC
