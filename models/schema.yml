@@ -4,21 +4,8 @@ models:
     columns:
       - name: cust_key
         tests:
-          - unique:
-              config:
-                store_failures: true
-                schema: APAC
-                alias:  apac_customers_not_null_fail
-          - not_null:
-              config:
-                store_failures: true 
-                schema: APAC
-                alias:  apac_customers_unique_fail
-  - name: orders_summed
-    columns:
-      - name: order_total
-        tests:
-         - valid_amount
+          - unique
+          - not_null
 
 sources:
   - name: PUBLIC
