@@ -1,7 +1,8 @@
 {{config (
     schema = 'STAGING', 
     database = 'DEV',
-    materialized = 'table'
+    materialized = 'table',
+    transient= false
 )}}
 select
     c_custkey as cust_key,

@@ -3,8 +3,7 @@
     database = 'DEV',
     unique_key=['NATION_KEY'],
     materialized = 'incremental',
-    post_hook=["update {{source('PUBLIC','JOB_CTRL_TBL')}} 
-                set upd_ts=(select max(upd_ts) from {{this}}) where tbl_nm=upper('NATION_T1')"]
+    post_hook=["{{upsert_ctrl_tbl()}}"]
 )}}
 
 select 
