@@ -6,6 +6,12 @@ models:
         tests:
           - unique
           - not_null
+  - name: order_detail
+    columns:
+     - name: order_status
+       tests:
+          - accepted_values:
+              values: ['F','P','O']
 
 sources:
   - name: PUBLIC
