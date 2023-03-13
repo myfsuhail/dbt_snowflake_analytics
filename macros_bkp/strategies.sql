@@ -103,7 +103,7 @@
 {% endmacro %} 
 
 {% macro snowflake__snapshot_string_as_time(timestamp) -%}
-    {%- set result = "\"to_timestamp_ntz('\" ~ timestamp ~ \"')\" -" %}
+    {%- set result = "to_timestamp_ntz(convert_timezone('UTC', current_timestamp()))" %}
         {{ return(result) }}
 {%- endmacro %}
 

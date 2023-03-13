@@ -185,9 +185,9 @@
           {{ create_table_as(False, target_relation, build_sql) }}
       {% endcall %}
 
-  {% else %}s
+  {% else %}
 
-      {{ adapter.valid_snapshot_target(target_relation) }}
+      --{{ adapter.valid_snapshot_target(target_relation) }}
 
       {% set staging_table = build_snapshot_staging_table(strategy, sql, target_relation) %}
 
