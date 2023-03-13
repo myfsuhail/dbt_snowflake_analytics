@@ -39,7 +39,7 @@
         where snapshotted_data.dbt_unique_key is null
            or (
                 snapshotted_data.dbt_unique_key is not null
-            and snapshotted_data.dbt_valid_to is null
+            and snapshotted_data.row_exp_dt is null
             and (
                 {{ strategy.row_changed }}
             )
@@ -83,12 +83,11 @@
 
         select
             'update' as dbt_change_type,
-            snapshotted_data.dbt_scd_id,
-            source_data.dbt_valid_from as dbt_valid_to
+            source_data.row_eff_dt as row_exp_dt
 
         from source_data
         join snapshotted_data on snapshotted_data.dbt_unique_key = source_data.dbt_unique_key
-        where snapshotted_data.dbt_valid_to is null
+        where snapshotted_data.row_exp_dt is null
         and (
             {{ strategy.row_changed }}
         )
@@ -103,7 +102,6 @@
 {% macro build_snapshot_table(strategy, sql) %}
 
     select *,
-        {{ strategy.scd_id }} as dbt_scd_id,
         {{ strategy.updated_at }} as row_eff_dt,
         nullif({{ strategy.updated_at }}, {{ strategy.updated_at }}) as row_exp_dt
     from (
@@ -140,8 +138,8 @@
     {% endcall %}
 
     {% call statement('build_snapshot_staging_relation_updates') %}
-        insert into {{ tmp_relation }} (dbt_change_type, dbt_scd_id, dbt_valid_to)
-        select dbt_change_type, dbt_scd_id, dbt_valid_to from (
+        insert into {{ tmp_relation }} (dbt_change_type,  row_exp_dt)
+        select dbt_change_type,row_exp_dt from (
             {{ updates_select }}
         ) dbt_sbq;
     {% endcall %}
@@ -187,7 +185,7 @@
           {{ create_table_as(False, target_relation, build_sql) }}
       {% endcall %}
 
-  {% else %}
+  {% else %}s
 
       {{ adapter.valid_snapshot_target(target_relation) }}
 

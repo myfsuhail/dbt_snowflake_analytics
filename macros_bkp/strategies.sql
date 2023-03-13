@@ -77,7 +77,7 @@
         See https://github.com/dbt-labs/dbt-core/issues/2350
     */ #}
     {% set row_changed_expr -%}
-        ({{ snapshotted_rel }}.dbt_valid_from < {{ current_rel }}.{{ updated_at }})
+        ({{ snapshotted_rel }}.row_eff_dt < {{ current_rel }}.{{ updated_at }})
     {%- endset %}
 
     {% set scd_id_expr = snapshot_hash_arguments([primary_key, updated_at]) %}
