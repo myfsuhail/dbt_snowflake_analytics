@@ -42,6 +42,8 @@
                                    | rejectattr('name', 'equalto', 'DBT_CHANGE_TYPE')
                                    | rejectattr('name', 'equalto', 'dbt_unique_key')
                                    | rejectattr('name', 'equalto', 'DBT_UNIQUE_KEY')
+                                   | rejectattr('name', 'equalto', 'row_eff_dt_tgt')
+                                   | rejectattr('name', 'equalto', 'ROW_EFF_DT_TGT')
                                    | list %}
 
       {% do create_columns(target_relation, missing_columns) %}
@@ -51,6 +53,8 @@
                                    | rejectattr('name', 'equalto', 'DBT_CHANGE_TYPE')
                                    | rejectattr('name', 'equalto', 'dbt_unique_key')
                                    | rejectattr('name', 'equalto', 'DBT_UNIQUE_KEY')
+                                   | rejectattr('name', 'equalto', 'row_eff_dt_tgt')
+                                   | rejectattr('name', 'equalto', 'ROW_EFF_DT_TGT')
                                    | list %}
 
       {% set quoted_source_columns = [] %}

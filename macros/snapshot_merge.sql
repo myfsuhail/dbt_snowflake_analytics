@@ -9,11 +9,11 @@
 
     merge into {{ target }} as DBT_INTERNAL_DEST
     using {{ source }} as DBT_INTERNAL_SOURCE
-    on DBT_INTERNAL_DEST.row_exp_dt=to_date('12/31/9999')
+    on DBT_INTERNAL_SOURCE.row_eff_dt_tgt = DBT_INTERNAL_DEST.row_eff_dt
     and  DBT_INTERNAL_SOURCE.{{ unique_key }}  = DBT_INTERNAL_DEST.{{ unique_key }} 
 
     when matched
-     and DBT_INTERNAL_DEST.row_exp_dt = to_date('12/31/9999')
+     and DBT_INTERNAL_DEST.row_exp_dt = to_timestamp_ntz('12/31/9999')
      and DBT_INTERNAL_SOURCE.dbt_change_type in ('update', 'delete')
         then update
         set row_exp_dt = DBT_INTERNAL_SOURCE.row_exp_dt

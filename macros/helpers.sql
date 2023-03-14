@@ -45,10 +45,11 @@
     snapshotted_data as (
 
         select *,
-            {{ strategy.unique_key }} as dbt_unique_key
+            {{ strategy.unique_key }} as dbt_unique_key,
+            to_timestamp_ntz(row_eff_dt) as row_eff_dt_tgt
 
         from {{ target_relation }}
-        where row_exp_dt =to_date('12/31/9999')
+        where row_exp_dt =to_timestamp_ntz('12/31/9999')
 
     ),
 
@@ -57,9 +58,8 @@
         select
             *,
             {{ strategy.unique_key }} as dbt_unique_key,
-            {{ strategy.updated_at }} as row_eff_dt,
-            to_date('12/31/9999') as row_exp_dt
-
+            to_timestamp_ntz({{ strategy.updated_at }}) as row_eff_dt,
+            to_timestamp_ntz('12/31/9999') as row_exp_dt
         from snapshot_query
     ),
 
@@ -68,8 +68,8 @@
         select
             *,
             {{ strategy.unique_key }} as dbt_unique_key,
-            {{ strategy.updated_at }} as row_eff_dt,
-            {{ strategy.updated_at }} as row_exp_dt
+            to_timestamp_ntz({{ strategy.updated_at }}) as row_eff_dt,
+            to_timestamp_ntz({{ strategy.updated_at }}) as row_exp_dt
 
         from snapshot_query
     ),
@@ -89,6 +89,7 @@
 
         select
             'insert' as dbt_change_type,
+            to_timestamp_ntz('12/31/9999') as row_eff_dt_tgt,
             source_data.*
 
         from insertions_source_data as source_data
@@ -107,6 +108,7 @@
 
         select
             'update' as dbt_change_type,
+            row_eff_dt_tgt,
             source_data.*
 
         from updates_source_data as source_data
@@ -123,6 +125,7 @@
 
         select
             'delete' as dbt_change_type,
+            to_timestamp_ntz('12/31/9999') as row_eff_dt_tgt,
             source_data.*,
             {{ snapshot_get_time() }} as row_eff_dt,
             {{ snapshot_get_time() }} as row_exp_dt
@@ -151,8 +154,8 @@
 {% macro default__build_snapshot_table(strategy, sql) %}
 
     select *,
-        {{ strategy.updated_at }} as row_eff_dt,
-        to_date('12/31/9999') as row_exp_dt
+        to_timestamp_ntz({{ strategy.updated_at }}) as row_eff_dt,
+        to_timestamp_ntz('12/31/9999') as row_exp_dt
     from (
         {{ sql }}
     ) sbq
