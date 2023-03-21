@@ -1,9 +1,13 @@
-{{config (
-    schema = 'STAGING', 
-    database = 'DEV',
-    materialized = 'table',
-    transient= false
-)}}
+{% snapshot dim_customer_t %}
+{{
+    config(
+      unique_key='cust_key',
+      strategy='check',
+      check_cols = 'all',
+      target_schema='FIN'
+    )
+}}
+
 select
     c_custkey as cust_key,
     c_name as cust_nm,
@@ -15,4 +19,5 @@ select
 from {{source('PUBLIC','CUSTOMER')}}
 left join {{source('PUBLIC','NATION')}} on customer.c_nationkey = nation.n_nationkey
 left join {{source('PUBLIC','REGION')}} on nation.n_regionkey = region.r_regionkey
-where r_name in ('{{ var("region_name") }}' )
+
+{% endsnapshot %}
