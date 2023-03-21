@@ -44,6 +44,8 @@ sources:
         description: Lineitem transactional data
       - name: JOB_CTRL_TBL
         description: Job control table
+      - name: PART
+        description: Provides the details on parts
 
 
   - name: NA
