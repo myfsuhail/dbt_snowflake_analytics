@@ -1,25 +1,33 @@
 version: 2
 models:
-  - name: apac_customers
+  - name: cust_t
     columns:
-      - name: cust_key
-        tests:
-          - unique:
-              config:
-                store_failures: true
-                schema: APAC
-                alias:  apac_customers_not_null_fail
-          - not_null:
-              config:
-                store_failures: true 
-                schema: APAC
-                alias:  apac_customers_unique_fail
-  - name: orders_summed
+     - name: cust_key
+       tests: 
+         - unique:
+            config:
+              store_failures: true
+              schema: STAGING
+              alias: cust_duplicate_rec  
+         - not_null:
+            config:
+              store_failures: true 
+              severity: error
+              error_if: ">10"
+              warn_if: ">2"
+              schema: STAGE
+              alias:  cust_null_rec
+  - name: orders_t
     columns:
-      - name: order_total
-        tests:
-         - valid_amount
-
+     - name: order_price
+       tests: 
+         - test_valid_amount
+  - name: part_t
+    columns:
+     - name: part_retail_price
+       tests: 
+         - test_valid_amount
+  
 sources:
   - name: PUBLIC
     database: DEV
@@ -39,14 +47,12 @@ sources:
             tests:
              - accepted_values:
                 values: ['F','P','O']
-        description: ORDERS transactional data
       - name: LINEITEM
         description: Lineitem transactional data
       - name: JOB_CTRL_TBL
         description: Job control table
       - name: PART
         description: Provides the details on parts
-
 
   - name: NA
     database: DEV
