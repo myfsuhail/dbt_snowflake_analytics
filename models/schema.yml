@@ -1,6 +1,9 @@
 version: 2
 models:
   - name: cust_t
+    tests:
+     - test_count_check:
+        compare_source: source("PUBLIC","CUSTOMER")
     columns:
      - name: cust_key
        tests: 
