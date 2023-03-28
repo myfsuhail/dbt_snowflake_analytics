@@ -4,6 +4,8 @@ models:
     tests:
      - test_count_check:
         compare_source: source("PUBLIC","CUSTOMER")
+        config:
+          store_failures: true
     columns:
      - name: cust_key
        tests: 
