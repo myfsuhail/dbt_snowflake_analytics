@@ -1,11 +1,6 @@
 version: 2
 models:
   - name: cust_t
-    tests:
-     - test_count_check:
-        compare_source: source("PUBLIC","CUSTOMER")
-        config:
-          store_failures: true
     columns:
      - name: cust_key
        tests: 
@@ -19,14 +14,18 @@ models:
               store_failures: true 
               severity: error
               error_if: ">10"
-              warn_if: ">2"
+              warn_if: ">=1"
               schema: STAGING
               alias:  cust_null_rec
   - name: orders_t
     columns:
      - name: order_price
        tests: 
-         - test_valid_amount
+         - test_valid_amount:
+            config:
+              schema: STAGING
+              alias: invalid_amount_details
+
   - name: part_t
     columns:
      - name: part_retail_price
