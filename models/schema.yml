@@ -20,7 +20,7 @@ models:
               severity: error
               error_if: ">10"
               warn_if: ">2"
-              schema: STAGE
+              schema: STAGING
               alias:  cust_null_rec
   - name: orders_t
     columns:
@@ -40,10 +40,11 @@ sources:
     tables:
       - name: CUSTOMER
         description: CUSTOMER master data
-      - name: NATION
-        description: NATION master data
-      - name: REGION
-        description: REGION master data
+        columns:
+          - name: c_custkey
+            description: Provides unique identifer for every customer
+            tests:
+              - unique
       - name: ORDERS
         description: ORDERS master data
         columns:
@@ -52,6 +53,10 @@ sources:
             tests:
              - accepted_values:
                 values: ['F','P','O']
+      - name: NATION
+        description: NATION master data
+      - name: REGION
+        description: REGION master data
       - name: LINEITEM
         description: Lineitem transactional data
       - name: JOB_CTRL_TBL
