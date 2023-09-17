@@ -12,9 +12,7 @@ select
     n_name as nation,
     r_name as region_name,
     c_acctbal as cust_acct_bal
-from dev.public.customer
-left join dev.public.nation on customer.c_nationkey = nation.n_nationkey
-left join dev.public.region on nation.n_regionkey = region.r_regionkey
-where r_name in ('ASIA','PACIFIC')
-
-
+from {{source('raw','customer')}}
+left join {{source('raw','nation')}} on customer.c_nationkey = nation.n_nationkey
+left join {{source('raw','region')}} on nation.n_regionkey = region.r_regionkey
+where r_name in ('{{ var("region_name") }}' )
