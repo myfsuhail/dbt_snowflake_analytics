@@ -41,4 +41,6 @@ vars:
 models:
  analytics:
   consumption:
+   +schema: consumption
+  raw:
    +schema: raw
