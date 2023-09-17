@@ -1,9 +1,10 @@
-{% test valid_amount(model, column_name) %}
+{% test test_valid_amount(model, column_name) %}
 
-select *
-from {{ ref('orders_summed')}}
-where order_total  <= 0
+{{ config(severity = 'error',
+          store_failures= true ) }}
+
+    select *
+    from {{ model }}
+    where {{ column_name }} <0
 
 {% endtest %}
-
-

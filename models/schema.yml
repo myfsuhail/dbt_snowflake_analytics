@@ -1,7 +1,8 @@
 version: 2
 models:
-  - name: apac_customers
+  - name: cust_t
     columns:
+<<<<<<< HEAD
       - name: cust_key
         tests:
           - unique:
@@ -18,7 +19,38 @@ models:
        tests:
           - accepted_values:
               values: ['F','P']
+=======
+     - name: cust_key
+       tests: 
+         - unique:
+            config:
+              store_failures: true
+              schema: STAGING
+              alias: cust_duplicate_rec  
+         - not_null:
+            config:
+              store_failures: true 
+              severity: error
+              error_if: ">10"
+              warn_if: ">=1"
+              schema: STAGING
+              alias:  cust_null_rec
+  - name: orders_t
+    columns:
+     - name: order_price
+       tests: 
+         - test_valid_amount:
+            config:
+              schema: STAGING
+              alias: invalid_amount_details
+>>>>>>> 68bee9f7eb02ec557bbf2ad22a067c9383e3f5e5
 
+  - name: part_t
+    columns:
+     - name: part_retail_price
+       tests: 
+         - test_valid_amount
+  
 sources:
   - name: PUBLIC
     database: DEV
@@ -26,10 +58,11 @@ sources:
     tables:
       - name: CUSTOMER
         description: CUSTOMER master data
-      - name: NATION
-        description: NATION master data
-      - name: REGION
-        description: REGION master data
+        columns:
+          - name: c_custkey
+            description: Provides unique identifer for every customer
+            tests:
+              - unique
       - name: ORDERS
         description: ORDERS master data
         columns:
@@ -38,12 +71,16 @@ sources:
             tests:
              - accepted_values:
                 values: ['F','P','O']
-        description: ORDERS transactional data
+      - name: NATION
+        description: NATION master data
+      - name: REGION
+        description: REGION master data
       - name: LINEITEM
         description: Lineitem transactional data
       - name: JOB_CTRL_TBL
         description: Job control table
-
+      - name: PART
+        description: Provides the details on parts
 
   - name: NA
     database: DEV
