@@ -38,7 +38,7 @@ vars:
   schema_name: PUBLIC
   region_name: UNK
 
-#models:
- #analytics:
-  #training:
-   # +schema: FIN
+models:
+ analytics:
+  consumption:
+   +schema: raw
