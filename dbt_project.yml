@@ -37,6 +37,7 @@ vars:
   schema_apac: APAC
   schema_name: PUBLIC
   region_name: UNK
+  source_system1: SAP
 
 models:
  analytics:
