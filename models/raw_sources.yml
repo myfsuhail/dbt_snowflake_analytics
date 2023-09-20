@@ -8,3 +8,11 @@ sources:
       - name: customer
       - name: region
       - name: nation
+
+  - name: raw_conn
+    database: '{{target.name}}'
+    schema: raw2
+    tables:
+      - name: customer
+      - name: region
+      - name: nation
