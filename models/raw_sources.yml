@@ -2,6 +2,8 @@ version: 2
 
 sources:
   - name: raw
+    database: '{{target.name}}'
+    schema: raw
     tables:
       - name: customer
       - name: region
