@@ -45,3 +45,5 @@ models:
    +schema: consumption
   raw:
    +schema: raw
+  finance:
+   +schema: fin

@@ -9,6 +9,12 @@ sources:
       - name: region
       - name: nation
 
+  - name: consumption
+    database: '{{target.name}}'
+    schema: consumption
+    tables:
+      - name: apac_customers
+
   - name: raw_conn
     database: '{{target.name}}'
     schema: raw2

@@ -1,6 +1,7 @@
 {{config (
     materialized = 'incremental',
-    unique_key = ['cust_key']
+    unique_key = ['cust_key'],
+    incremental_strategy='delete+insert'
 )}}
 
 {% set time_val = get_max_upd_ts() %}
