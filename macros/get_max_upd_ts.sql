@@ -2,7 +2,7 @@
 
 {% set sql_statement %}
 
-        select nvl(max(upd_ts),'1970-01-01') from {{this}};
+        select nvl(max(src_upd_ts),'1970-01-01') from {{this}};
 
 {% endset %}
 

@@ -1,5 +1,6 @@
 {{config (
-    materialized = 'table'
+    materialized = 'incremental',
+    unique_key = ['cust_key']
 )}}
 
 {% set time_val = get_max_upd_ts() %}
@@ -17,4 +18,7 @@ select
 from {{ source ('raw','customer') }}
 left join {{ source ('raw','nation') }} on customer.c_nationkey = nation.n_nationkey
 left join {{ source ('raw','region') }} on nation.n_regionkey = region.r_regionkey
-where r_name in ('ASIA','PACIFIC')
+
+{% if is_incremental() %}
+where customer.upd_ts > '{{time_val}}'
+{% endif %}
