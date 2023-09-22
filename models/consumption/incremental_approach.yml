@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: incremental_approach
+    columns:
+      - name: cust_key
+        description: "Primary Key for the Table"
+        tests:
+          - unique
+          - not_null
+      - name: region_name
+        tests:
+          - accepted_values:
+              values: ['ASIA', 'EUROPE', 'AFRICA', 'MIDDLE EAST','AMERICA']
