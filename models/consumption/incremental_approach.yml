@@ -2,9 +2,10 @@ version: 2
 
 models:
   - name: incremental_approach
+    description: "Customer Data"
     columns:
       - name: cust_key
-        description: "Primary Key for the Table"
+        description: "Customer Key.Primary Key for the Table"
         tests:
           - unique
           - not_null
@@ -12,3 +13,5 @@ models:
         tests:
           - accepted_values:
               values: ['ASIA', 'EUROPE', 'AFRICA', 'MIDDLE EAST','AMERICA']
+      - name: cust_nm
+        description: "Customer Name"
