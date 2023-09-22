@@ -6,6 +6,6 @@
 
 select *
 from {{ ref ('customer') }}
-where r_name in ('AMERICA')
+where region_name in ('AMERICA')
 
 
