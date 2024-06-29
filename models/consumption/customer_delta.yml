@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: customer_delta
+    columns:
+      - name: c_custkey
+        tests:
+          - unique
+          - not_null
+      - name: update_timestamp
+        tests:
+          - not_null
+      - name: n_regionkey
+        tests:
+          - relationships:
+              to: source('raw_schema','nation')
+              field: n_regionkey
+          - accepted_values:
+              values: [0,1,2,3,4]
+      - name: c_acctbal
+        tests:
+          - validate_acctbal

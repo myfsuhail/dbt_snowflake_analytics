@@ -42,7 +42,8 @@ vars:
 models:
  analytics:
   consumption:
-   +schema: consumption
+    +schema: consumption
+    +materialized: table
   raw:
    +schema: raw
   finance:
