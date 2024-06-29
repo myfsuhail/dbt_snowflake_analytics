@@ -16,9 +16,9 @@ select
     c_acctbal as cust_acct_bal,
     customer.upd_ts as src_upd_ts,
     current_timestamp() as upd_ts 
-from {{ source ('raw','customer') }}
-left join {{ source ('raw','nation') }} on customer.c_nationkey = nation.n_nationkey
-left join {{ source ('raw','region') }} on nation.n_regionkey = region.r_regionkey
+from {{ source ('raw_schema','customer') }}
+left join {{ source ('raw_schema','nation') }} on customer.c_nationkey = nation.n_nationkey
+left join {{ source ('raw_schema','region') }} on nation.n_regionkey = region.r_regionkey
 
 {% if is_incremental() %}
 where customer.upd_ts > '{{time_val}}'
