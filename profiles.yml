@@ -7,5 +7,5 @@ snowflake:
       warehouse: COMPUTE_WH
       database: DBT_SNOWFLAKE_DEMO
       schema: PUBLIC
-      account: ''
-      user: ''
+      account: JFAFBHE-CWC07645
+      user: myfsnowflake001
