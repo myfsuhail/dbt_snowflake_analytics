@@ -2,7 +2,6 @@ version: 2
 
 sources:
   - name: public
-    database: '{{target.name}}'
     schema: public
     tables:
       - name: customer
@@ -10,7 +9,6 @@ sources:
       - name: nation
 
   - name: consumption
-    database: '{{target.name}}'
     schema: public
     tables:
       - name: apac_customers
