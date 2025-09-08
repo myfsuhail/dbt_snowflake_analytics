@@ -7,8 +7,3 @@ sources:
       - name: customer
       - name: region
       - name: nation
-
-  - name: consumption
-    schema: public
-    tables:
-      - name: apac_customers
