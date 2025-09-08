@@ -5,7 +5,7 @@ snowflake:
       type: snowflake
       role: ACCOUNTADMIN
       warehouse: COMPUTE_WH
-      database: SNOWFLAKE_LEARNING_DB
+      database: DBT_SNOWFLAKE_DEMO
       schema: PUBLIC
       account: ''
       user: ''

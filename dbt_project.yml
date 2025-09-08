@@ -39,11 +39,11 @@ vars:
   region_name: UNK
   source_system1: SAP
 
-models:
- analytics:
-  consumption:
-   +schema: consumption
-  raw:
-   +schema: raw
-  finance:
-   +schema: fin
+# models:
+#  analytics:
+#   consumption:
+#    +schema: consumption
+#   raw:
+#    +schema: raw
+#   finance:
+#    +schema: fin

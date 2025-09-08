@@ -1,6 +1,4 @@
 {{config (
-    schema = 'consumption', 
-    database = 'dev',
     materialized = 'table'
 )}}
 

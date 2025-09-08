@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: raw
+  - name: public
     database: '{{target.name}}'
-    schema: raw
+    schema: public
     tables:
       - name: customer
       - name: region
@@ -11,14 +11,6 @@ sources:
 
   - name: consumption
     database: '{{target.name}}'
-    schema: consumption
+    schema: public
     tables:
       - name: apac_customers
-
-  - name: raw_conn
-    database: '{{target.name}}'
-    schema: raw2
-    tables:
-      - name: customer
-      - name: region
-      - name: nation
