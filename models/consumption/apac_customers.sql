@@ -3,7 +3,7 @@
 )}}
 
 select *
-from {{ ref ('customer') }}
+from {{ ref ('customer_tbl') }}
 where region_name in ('ASIA','PACIFIC')
 
 

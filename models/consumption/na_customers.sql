@@ -1,9 +1,9 @@
 {{config (
-    materialized = 'table'
+    materialized = 'view'
 )}}
 
 select *
-from {{ ref ('customer') }}
+from {{ ref ('customer_tbl') }}
 where region_name in ('AMERICA')
 
 
